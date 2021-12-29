@@ -52,8 +52,9 @@ buttons.forEach((button) => {
         let computerSelectionIndex = Math.floor(Math.random() * options.length);
 
         let computerSelection = options[computerSelectionIndex];
-
-        playRound(playerSelection, computerSelection)
+        if (userTotal !== 5 && compTotal !== 5) {
+            playRound(playerSelection, computerSelection)
+        }
     });
 
 
