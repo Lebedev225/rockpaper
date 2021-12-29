@@ -1,43 +1,71 @@
 
 function playRound (playerSelection, computerSelection) {
-    if (playerSelection == computerSelection) {
-        return console.log("Tie!");
+    console.log("Computer chose: " + computerSelection);
+    
+    if (userTotal < 5 && compTotal < 5) {
+        if (playerSelection == computerSelection) {
+            return console.log("Tie!");
+        }
+    
+        else if (playerSelection == "rock" && computerSelection == "scissors") {
+            userTotal = userTotal + 1
+            return console.log("User Wins!");
+        }
+    
+        else if (playerSelection == "paper" && computerSelection == "rock") {
+            userTotal = userTotal + 1
+            return console.log("User Wins!");
+        }
+    
+        else if (playerSelection == "scissors" && computerSelection == "paper") {
+            userTotal = userTotal + 1
+            return console.log("User Wins!");
+        }
+    
+        else {
+            compTotal = compTotal + 1
+            return console.log("Computer Wins!");
+        }
+       
+
+    } else if (userTotal == 5) {
+        return console.log("User wins the game!");
+        
     }
-
-    else if (playerSelection == "rock" && computerSelection == "scissors") {
-        return console.log("User Wins!");
+     else if (compTotal == 5) {
+        return console.log("Computer wins the game");
+        
     }
-
-    else if (playerSelection == "paper" && computerSelection == "rock") {
-        return console.log("User Wins!");
-    }
-
-    else if (playerSelection == "scissors" && computerSelection == "paper") {
-        return console.log("User Wins!");
-    }
-
-    else {
-        return console.log("Computer Wins!");
-
-    }
-
-
+    
 }
 
-let options = ["rock", "paper", "scissors"];
-let playerInput = prompt("Rock, Paper or Scissors?: ");
-let playerSelection = playerInput.toLowerCase();
 
+let options = ["rock", "paper", "scissors"];
+let userTotal = 0
+let compTotal = 0
+
+
+const buttons = document.querySelectorAll('button');
+buttons.forEach((button) => {
+    button.addEventListener('click', () => {
+        let playerSelection = button.id
+        let computerSelectionIndex = Math.floor(Math.random() * options.length);
+
+        let computerSelection = options[computerSelectionIndex];
+
+        playRound(playerSelection, computerSelection)
+    });
+
+
+
+});
    
 
-let computerSelectionIndex = Math.floor(Math.random() * options.length);
 
-let computerSelection = options[computerSelectionIndex];
-console.log("You chose: " + playerSelection);
-
-console.log("Computer chose: " + computerSelection);
+//console.log("You chose: " + playerSelection);
 
 
-playRound(playerSelection, computerSelection);
+
+
 
 
